@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libreria Los Peques</title>
+    <link rel="icon" type="image/vnd.ico" href="../img/favicon-32x32.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Estilos generales -->
+    <link rel="stylesheet" type="text/css" href="../css/inicio.css">
+    <!-- Paginador -->
+    <link rel="stylesheet" href="../css/grid.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <!-- IMPORTADOR DE HTML (INCLUDER) -->
+    <script src="../js/inc.js"></script>
+	
+</head>
+
+
+
+
+<body>
+
+<!-- background selector: DESCOMENTAR EL QUE QUIERAS USAR Y COMENTÁ EL QUE ESTÉ ACTIVO -->
+
+<!-- crazy background -->
+<div HTMLinclude="./bg_crazy.html"><script>includeHTML();</script></div>
+
+<!-- background de burbujas cuadradas -->
+<!-- <div HTMLinclude="./bg_bubbles.html"><script>includeHTML();</script></div> -->
+
+
+
+  <header class="header">
+   <nav>
+
+     <input type="checkbox" id="check">
+     <label for="check" class="checkbtn">
+       <i class="fa-solid fa-bars"></i>
+     </label>
+
+       <a href="./Inicio.html" class="enlace">
+       <img src="../img/Los-peques4.png" alt="" class="logo">
+       </a>
+
+       <ul>
+         <li><a href="./Inicio.html">Inicio</a></li>
+         <li><a href="./escolar.html">Escolar</a></li>
+         <li><a href="./oficina.html">Oficina</a></li>
+         <li><a href="./arte.html">Arte</a></li>
+         <li><a class="active" href="./api.html">API</a></li>
+        <li><a href="./contacto.html">Contacto</a></li>   
+       </ul>
+
+   </nav>
+</header>
+
+<section class="api">
+
+    <main>
+        
+        <div class="api">
+            
+            <button onclick="cargarProductos()">.. Cargar Producto ..</button>
+
+        </div>
+        
+    
+        <div id="grid_container" >
+            <!-- Aquí insertaremos contenido que recuperamos mediante la API -->
+        </div>
+    
+        <script>
+            // Realizar una solicitud HTTP a la API y obtener los datos JSON
+            fetch('http://localhost:5000/producto')
+                .then(response => response.json())
+                .then(data => {
+                    // Obtener la referencia al elemento <div> en el que se mostrarán los resultados
+                    const resultadosDiv = document.getElementById('grid_container');
+    
+                    // Recorrer los datos JSON y construir el contenido HTML
+                    // let contenidoHTML = '';
+                    data.forEach(producto => {
+                        // contenidoHTML += `<p>ID: ${producto.id_producto}</p>`;
+                        // contenidoHTML += `<p>Nombre: ${producto.nombre_producto}</p>`;
+                        // contenidoHTML += `<p>Descripción: ${producto.descripcion_producto}</p>`;
+                        // contenidoHTML += `<hr>`;
+                        grid_container.innerHTML +=
+                            `<div class="responsive">
+                                <div class="item">
+                                    <a target="_blank" href="../static/img/${producto.url_img_prod}">
+                                    <img src="../static/img/${producto.url_img_prod}" alt="Imagen de api ${producto.url_img_prod}">
+                                    </a>
+                                    <div class="desc">${producto.nombre_producto}</div>
+                                </div>
+                            </div>`
+                    });
+    
+                    // Asignar el contenido HTML al elemento <div> para mostrar los resultados
+                    // resultadosDiv.innerHTML = contenidoHTML;
+                })
+                .catch(error => {
+                    console.error('Error al obtener los datos JSON:', error);
+                });
+        </script>
+
+        <!-- <script>
+            var id = 12;
+            function cargarProductos() {
+                // fetch('https://fakestoreapi.com/products/'+id.toString()) 
+                fetch('http://127.0.0.1:5000/producto') 
+                    .then(res => res.json())
+                    .then(res => {
+                        grid_container.innerHTML +=
+                            `<div class="responsive">
+                                <div class="item">
+                                    <a target="_blank" href="${res.image}">
+                                    <img src="${res.image}" alt="Imagen de api ${id.toString()}">
+                                    </a>
+                                    <div class="desc">${res.category}</div>
+                                </div>
+                            </div>`
+                        })
+                    id+=1;
+                }
+        </script> -->
+
+    </main>
+
+</section>
+
+   <!-- FOOTER  -->
+   <div HTMLinclude="./footer.html"><script>includeHTML();</script></div>
+
+</body>
+</html>
+

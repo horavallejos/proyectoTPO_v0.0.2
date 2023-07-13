@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <header class="header">
+  <nav>
+
+    <input type="checkbox" id="check">
+    <label for="check" class="checkbtn">
+      <i class="fas fa-bars"></i>
+    </label>
+
+      <a href="/" class="enlace">
+      <img src="../static/img/Los-peques4.png" alt="Los Peques" class="logo">
+      </a>
+
+      <ul>
+        <li><a class="active" href="/">Inicio</a></li>
+        <li><a href="/escolar">Escolar</a></li>
+        <li><a href="/oficina">Oficina</a></li>
+        <li><a href="/arte">Arte</a></li>
+        <!-- <li><a href="/api">API</a></li>
+        <li><a href="/contacto">Contacto</a></li>    -->
+        <li><a href="/crud_prods">Admin</a></li>   
+      </ul>
+
+  </nav>
+</header>
+
+    <!-- MAIN -->
+    <section>
+      
+        <article class="block">
+          <div class="container-all">
+            <input type="radio" id="1" name="image-slide" hidden />
+            <input type="radio" id="2" name="image-slide" hidden />
+            <input type="radio" id="3" name="image-slide" hidden />
+            <input type="radio" id="4" name="image-slide" hidden />
+            <input type="radio" id="5" name="image-slide" hidden />
+            
+            <div class="slide">
+              <div class="item-slide">
+                <img src="../static/img/carr3.jpg" width="860" height="608" alt="Imagen de Carrusel Número 3" />
+              </div>
+              <div class="item-slide">
+                <img src="../static/img/carr1.jpg" width="860" height="608" alt="Imagen de Carrusel Número 1" />
+              </div>
+              <div class="item-slide">
+                <img src="../static/img/carr2.jpg" width="860" height="608" alt="Imagen de Carrusel Número 2" />
+              </div>
+              <div class="item-slide">
+                <img src="../static/img/carr3.jpg" width="860" height="608" alt="Imagen de Carrusel Número 3" />
+              </div>
+              <div class="item-slide">
+                <img src="../static/img/carr1.jpg" width="860" height="608" alt="Imagen de Carrusel Número 1" />
+              </div>
+            </div>
+            <div class="pagination">
+              <label for="1" class="pagination-item"
+                ><img src="../static/img/carr3.jpg" alt="Miniatura de Carrusel Número 1" />
+              </label>
+              <label for="2" class="pagination-item"
+                ><img src="../static/img/carr1.jpg" alt="Miniatura de Carrusel Número 2" />
+              </label>
+              <label for="3" class="pagination-item"
+                ><img src="../static/img/carr2.jpg" alt="Miniatura de Carrusel Número 3" />
+              </label>
+              <label for="4" class="pagination-item"
+                ><img src="../static/img/carr3.jpg" alt="Miniatura de Carrusel Número 4" />
+              </label>
+              <label for="5" class="pagination-item"
+                ><img src="../static/img/carr1.jpg" alt="Miniatura de Carrusel Número 5" />
+              </label>
+            </div>
+          </div>
+        </article>
+      
+    </section>
+    <!-- FOOTER ESPECIAL PARA INICIO -->
+    <div class="footer">
+      <footer style="position: fixed;">
+        <a href="https://www.facebook.com/profile.php?id=100069567007108" >  
+        <img src="../static/img/faceb.png" alt="Facebook Logo" class="redes">
+      </a>
+      <a href=" https://www.instagram.com/invites/contact/?i=1v1k317vxpbfq&utm_content=o4jkhjb ">
+        <img src="../static/img/instag.png" alt="Instagram Logo" class="redes">
+      </a>
+      <a href="">
+        <img src="../static/img/whats.png" alt="Whatsapp Logo" class="redes">
+      </a>
+        <br>
+        <a class="blanco" href="#">Aviso legal</a>
+        <a class="blanco" href="#">Política de privacidad</a>
+        <a class="blanco" href="#">Términos y condiciones</a>
+        <p class="verde">Copyright 2023. Los Peques</p>
+    
+    </footer>
+    </div>
+  {% endblock %}

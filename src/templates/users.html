@@ -1,0 +1,124 @@
+{% include 'index.html' %}
+
+<body>
+    <header class="header">
+        <nav>
+      
+          <input type="checkbox" id="check">
+          <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+          </label>
+      
+            <a href="/" class="enlace">
+            <img src="../static/img/Los-peques4.png" alt="Los Peques" class="logo">
+            </a>
+      
+            <ul>
+              <li><a title="Admin Usuarios" href="/crud_users" class="active">Usuarios</a></li>
+              <li><a title="Admin Productos" href="/crud_prods">Productos</a></li>
+              <li><a title="Admin Categorías" href="/crud_categ">Categorias</a></li>
+              <!-- <li><a href="/arte">Arte</a></li>
+              <li><a href="/api">API</a></li>1
+              <li><a href="/contacto">Contacto</a></li>    -->
+              <li><a href="/">Website</a></li>   
+            </ul>
+      
+        </nav>
+      
+      </header>
+    <h1 class="text-center mt-5 mb-5 text-primary">Usuarios</h1>
+        
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <form action="/usuarios" method="POST">
+                    <div class="row mb-3 text-center">
+                        <div class="col">
+                            <label >Nombre</label>
+                            <input title="nombre" type="text" class="form-control mb-3" name="nombre">
+                        </div>
+                        <div class="col">
+                            <label >Apellido</label>
+                            <input title="apellido" type="text" class="form-control mb-3" name="apellido">
+                        </div>
+                        <div class="col">
+                            <label >e-Mail</label>
+                            <input title="email" type="text" class="form-control mb-3" name="email">
+                        </div>
+                        <div class="col">
+                            <label >Contraseña</label>
+                            <input title="password" type="password" class="form-control mb-3" name="password">
+                        </div>
+                        <div class="col">
+                            <button class="btn btn-primary mb-3 mt-4" type="submit">Guardar</button>
+                        </div>
+                    </div>
+                </form>
+ 
+                <!-- TABLA -->
+
+                <table class="table table-bordered">
+                    <thead class="text-center">
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">E-Mail</th>
+                        <th scope="col">Constraseña</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Borrar</th>
+                    </thead>
+                    <tbody>
+                        {% for d in data %}
+                        <tr class="text-center">
+                            <td>{{d.id_usuario}}</td>
+                            <td>{{d.nombre}}</td>
+                            <td>{{d.apellido}}</td>
+                            <td>{{d.correo_electronico}}</td>
+                            <td>{{d.contrasena}}</td>
+                            <td><button class="btn btn-primary btn-sm" id="btn-edit{{d.id_usuario}}" data-bs-toggle="modal" data-bs-target="#modal{{d.id_usuario}}">Editar</button></td>
+                            <td><a href="{{url_for('eliminar_usuario',id_usuario=d.id_usuario)}}" class="btn btn-danger btn-sm">Borrar</a></td>
+                        </tr>
+
+                        <!-- VENTANA MODAL -->
+
+                        <div class="modal fade" id="modal{{d.id_usuario}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h1 class="modal-title fs-5" id="exampleModalLabel">{{d.nombre}} {{d.apellido}}</h1>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                  <!-- Formulario de edicion -->
+                                  <form action="/edit/{{d.id_usuario}}" method="PUT">
+                                    <label >Nombre</label>
+                                    <input title="nombre" type="text" class="form-control mb-3" name="nombre" value="{{d.nombre}}">
+                                    <label >Apellido</label>
+                                    <input title="apellido" type="text" class="form-control mb-3" name="apellido" value="{{d.apellido}}">
+                                    <label >e-Mail</label>
+                                    <input title="email" type="text" class="form-control mb-3" name="email" value="{{d.correo_electronico}}">
+                                    <label >Contraseña</label>
+                                    <input title="password" type="password" class="form-control mb-3" name="password" value="{{d.contrasena}}">
+                                </div> 
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </form>
+                              </div>
+                            </div>
+                          </div>
+
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="../static/js/active.js"></script>
+    {% include 'footer.html' %}
+    
+    </body>
+    </html>

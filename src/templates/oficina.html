@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <header class="header">
+   <nav>
+
+     <input type="checkbox" id="check">
+     <label for="check" class="checkbtn">
+       <i class="fa-solid fa-bars"></i>
+     </label>
+
+       <a href="/" class="enlace">
+       <img src="../static/img/Los-peques4.png" alt="" class="logo">
+       </a>
+
+      <ul>
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/escolar">Escolar</a></li>
+        <li><a class="active" href="/oficina">Oficina</a></li>
+        <li><a href="/arte">Arte</a></li>
+        <!-- <li><a href="/api">API</a></li>
+        <li><a href="/contacto">Contacto</a></li>    -->
+        <li><a href="/crud_prods">Admin</a></li>   
+      </ul>
+
+   </nav>
+</header>
+
+  <section>
+    {% for d in data %}
+    <main class="main">
+      <div class="responsive">
+        <div class="gallery">
+          <a target="_blank" href="../static/img/{{d.url_img_prod}}">
+            <img src="../static/img/{{d.url_img_prod}}" alt="{{d.nombre_producto}}">
+          </a>
+          <div class="desc">{{d.descripcion_producto}}</div>
+        </div>
+      </div>
+    {% endfor %}
+
+    </main>
+  
+  </section>
+  
+      
+    {% include 'footer.html' %}
+    {% endblock %}
+  </body>
+</html>

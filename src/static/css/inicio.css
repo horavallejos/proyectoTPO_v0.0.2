@@ -1,0 +1,368 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@400;500;600&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: 'Spartan', sans-serif;
+}
+
+
+html {
+    min-height: 100%;
+    position: relative;
+}
+
+body {
+    max-width: 1500px;
+    margin: 0 auto;
+    /* background: linear-gradient(245.59deg, #4d9559 0%, #6a71f2 28.53%, #8b36af 75.52%); */
+    /* margin-bottom: 120px; */
+    /* padding-bottom: 120px; */
+}
+
+nav {
+    background: #4e54c8;
+    height: 80px;
+    width: 100%;
+}
+
+main{
+    display: block;
+    /* display: grid; */
+    min-height:calc(100vh - 200px);
+    background-color: #fff;
+    max-width: 1500px;
+    /* padding-bottom: 120px; */
+}
+
+footer {   
+    padding-top: 10px;
+    position:sticky;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+    max-width: 1500px;
+    height: 120px;
+    color: white;
+    background-color: #4e54c8;
+    z-index: 0;
+    line-height: 1.8;
+}
+
+.enlace{
+    position: absolute;  
+    padding: 20px 50px;
+}
+
+.logo{
+    height: 40px;
+}
+
+nav ul{
+    float: right;
+    margin-right: 20px;
+}
+
+nav ul li{
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+}
+
+nav ul li a{
+    color: aliceblue;
+    font-size: 18px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+
+li a.active, li a:hover{
+    background-color: #8f94fb;
+    transition: .5s;
+    color:#4e54c8;
+    font-weight: 700;
+}
+
+li a.active {
+    color: white;
+}
+
+.checkbtn{
+    font-size: 20px;
+    color: aliceblue;
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+}
+
+#check{
+    display: none;
+}
+
+a {
+    -webkit-transition: .3s all ease;
+    -o-transition: .3s all ease;
+    transition: .3s all ease;
+    color: #2553b8; }
+    a:hover, a:focus {
+      text-decoration: none !important;
+      outline: none !important;
+      -webkit-box-shadow: none;
+      box-shadow: none; }
+
+section {
+    position:relative;
+    background-color: white;
+    height: calc(100vh -200px);
+
+}
+
+.contact {
+    position:relative;
+    background-color: white;
+    height: calc(100vh - 80px);
+    /* padding-bottom: 120px; */
+    margin-bottom: 120px;
+}
+
+.api {
+    margin:0 auto;
+    justify-content: center;
+    text-align:center;
+    box-sizing: border-box;
+    min-height: calc(100vh - 200px);
+}
+
+.contenido {
+    box-sizing: border-box;
+    margin-bottom: 120px;
+    display: block;
+}
+
+
+.verde {
+    color: #6c3;
+}
+
+.blanco {
+    color: white;
+}
+
+@media (max-width: 952px){
+    .enlace{
+        padding-left: 20px;
+    }
+    nav ul li a{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 858px){
+        .checkbtn{
+            display: block;
+        margin-top: 1.2em;
+    }
+    ul {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background:#4e54c8;
+        top: 80px;
+        left: -100%;
+        text-align: center;
+        transition: all .5s;
+        z-index: 10;
+    }
+    nav ul li{
+        display: block;
+        margin: 30px 0;
+        line-height: 10px;
+        
+    }
+
+    nav ul li a{
+        font-size: 20px;
+    }
+
+    li a:hover, li a.active{
+        background: none;
+        color: #fff;
+        /* background-color: #8f94fb; */
+        transition: .5s;
+        /* color:#4e54c8; */
+    }
+
+    footer {
+        font-size: 0.8rem;
+    }
+
+    section {
+        /* background-color: white; */
+        height: calc(100vh - 200px);
+        padding-bottom: 120px;
+    }
+
+    #check:checked ~ ul{
+        left:0; 
+    }
+}
+
+
+
+/* ******************************* */
+/* ******************************* */
+/* efecto de fondo de colores */
+/* ******************************* */
+/* ******************************* */
+.bg {
+    animation:slide 7s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
+    bottom:0;
+    left:-50%;
+    opacity:.5;
+    position:fixed;
+    right:-50%;
+    top:0;
+    z-index:-1;
+  }
+
+  .bg2 {
+    animation-direction:alternate-reverse;
+    animation-duration:9s;
+  }
+  
+  .bg3 {
+    animation-duration:11s;
+  }
+
+  @keyframes slide {
+    0% {
+      transform:translateX(-25%);
+    }
+    100% {
+      transform:translateX(25%);
+    }
+  }
+/* fin efecto de fondo de colores */
+/* ************************************** */
+
+
+/* +++++++++++++++++++++++++++++++++++++++++++ */
+/* efecto de fondo de burbujas cuadradas */
+.area{
+    background: #4e54c8;  
+    background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);  
+    bottom:0;
+    left:-50%;
+    opacity:.5;
+    position:fixed;
+    right:-50%;
+    top:0;
+    z-index:-1;
+}
+.circles{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.circles li{
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    animation: animate 25s linear infinite;
+    bottom: -150px;
+}
+.circles li:nth-child(1){
+    left: 25%;
+    width: 80px;
+    height: 80px;
+    animation-delay: 0s;
+}
+.circles li:nth-child(2){
+    left: 10%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 2s;
+    animation-duration: 12s;
+}
+.circles li:nth-child(3){
+    left: 70%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 4s;
+}
+.circles li:nth-child(4){
+    left: 40%;
+    width: 60px;
+    height: 60px;
+    animation-delay: 0s;
+    animation-duration: 18s;
+}
+.circles li:nth-child(5){
+    left: 65%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 0s;
+}
+.circles li:nth-child(6){
+    left: 75%;
+    width: 110px;
+    height: 110px;
+    animation-delay: 3s;
+}
+.circles li:nth-child(7){
+    left: 35%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 7s;
+}
+.circles li:nth-child(8){
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    animation-delay: 15s;
+    animation-duration: 45s;
+}
+.circles li:nth-child(9){
+    left: 20%;
+    width: 15px;
+    height: 15px;
+    animation-delay: 2s;
+    animation-duration: 35s;
+}
+.circles li:nth-child(10){
+    left: 85%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 0s;
+    animation-duration: 11s;
+}
+
+@keyframes animate {
+    0%{
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+    }
+
+    100%{
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+    }
+}
+/* +++++++++++++++++++++++++++++++++++++++++ */
+/*    FIN DE FONDO DE BURBUJAS CUADRADAS     */
+/* ***************************************** */

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD USUARIOS</title>
+<style>
+    /* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+h2 {
+    color: #555;
+}
+
+/* Formulario */
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 200px;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    padding: 8px 15px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Enlaces y botones */
+a {
+    color: #333;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+input[type="submit"],
+input[type="button"] {
+    padding: 8px 15px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover,
+input[type="button"]:hover {
+    background-color: #555;
+}
+
+</style>
+</head>
+<body>
+   
+    <h1>CRUD de Usuarios</h1>
+
+    <!-- Formulario de creación/modificación de usuario -->
+    <h2>Crear/Modificar Usuario</h2>
+    <form method="POST" action="{{ action_url }}">
+        <input type="hidden" name="id_usuario" value="{{ usuario.id_usuario if usuario else '' }}">
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" value="{{ usuario.nombre if usuario else '' }}" required><br>
+        <label for="apellido">Apellido:</label>
+        <input type="text" name="apellido" value="{{ usuario.apellido if usuario else '' }}" required><br>
+        <label for="correo_electronico">Correo Electrónico:</label>
+        <input type="email" name="correo_electronico" value="{{ usuario.correo_electronico if usuario else '' }}" required><br>
+        <label for="hierarchy">Jerarquía:</label>
+        <input type="text" name="hierarchy" value="{{ usuario.hierarchy if usuario else '' }}" required><br>
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" name="contrasena" required><br>
+        <input type="submit" value="Guardar">
+    </form>
+
+    <!-- Listado de usuarios -->
+    <h2>Listado de Usuarios</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Correo Electrónico</th>
+            <th>Jerarquía</th>
+            <th>Acciones</th>
+        </tr>
+        {% for usuario in usuarios %}
+        <tr>
+            <td>{{ usuario.id_usuario }}</td>
+            <td>{{ usuario.nombre }}</td>
+            <td>{{ usuario.apellido }}</td>
+            <td>{{ usuario.correo_electronico }}</td>
+            <td>{{ usuario.hierarchy }}</td>
+            <td>
+                <a href="{{ url_for('editar_usuario', id_usuario=usuario.id_usuario) }}">Editar</a>
+                <form method="POST" action="{{ url_for('eliminar_usuario', id_usuario=usuario.id_usuario) }}" style="display:inline-block;">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="submit" value="Eliminar">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>

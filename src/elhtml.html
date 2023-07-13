@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="elcss.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>CRUD</h1>
+
+    <form id="crud-form">
+        <input type="hidden" id="id_producto" name="id_producto">
+        <label for="descripcion_producto">descripcion_producto:</label>
+        <input type="text" id="descripcion_producto" name="descripcion_producto">
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" name="email">
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" name="email">
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" name="email">
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" name="email">
+        <button type="submit" id="save-btn">Guardar</button>
+    </form>
+    {
+        "categoria_producto": 1,
+        "descripcion_producto": "lapiz grafito negro copado",
+        "id_producto": 27,
+        "nombre_producto": "lapiz feliz",
+        "precio_producto": "123.00",
+        "stock_producto": 0,
+        "url_img_prod": "Lapicera Bic.webp"
+      }
+    <table id="data-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Correo electrónico</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script src="eljs.js"></script>
+</body>
+</html>
