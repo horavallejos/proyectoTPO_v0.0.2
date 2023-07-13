@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-07-2023 a las 21:04:05
+-- Tiempo de generación: 13-07-2023 a las 14:19:13
 -- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Versión de PHP: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -50,7 +50,9 @@ CREATE TABLE `categorias` (
 
 INSERT INTO `categorias` (`id_categoria`, `nombre_categoria`) VALUES
 (1, 'libreria'),
-(2, 'escuela');
+(2, 'escuela'),
+(3, 'oficina'),
+(4, 'arte');
 
 -- --------------------------------------------------------
 
@@ -85,9 +87,12 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id_producto`, `nombre_producto`, `descripcion_producto`, `precio_producto`, `categoria_producto`, `url_img_prod`, `stock_producto`) VALUES
-(25, 'goma de borrar', 'Goma de Borrar para lápiz y tinta Marca Pizzini', 150.00, 2, 'borrador.webp', 0),
-(26, 'lapiz', 'lapiz grafito negro', 100.00, 2, 'corrector.webp', 0),
-(27, 'lapiz feliz', 'lapiz grafito negro copado', 123.00, 1, 'Lapicera Bic.webp', 0);
+(25, 'goma de borrar', 'Goma de Borrar para lápiz y tinta Marca Pizzini', 250.00, 2, 'borrador.webp', 8),
+(26, 'lapiz', 'lapiz grafito negro', 100.00, 2, 'corrector.webp', 12),
+(36, 'Cuaderno espiral', 'Cuadernillo espiral tipo oficio 84h', 350.00, 2, 'cuadernillo oficio.webp', 12),
+(37, 'Lapicera bic cristal fina azul', 'Lapicera bic cristal fina', 150.00, 2, 'Lapicera Bic Fina.webp', 20),
+(38, 'oops', 'O_ops, No hay productos', 0.00, 1, 'no_product.png', 0),
+(39, 'pinceles chatos sintetico setx7 rectos', 'pinceles chatos sintetico setx7 rectos', 500.00, 4, 'pinceles.png', 5);
 
 -- --------------------------------------------------------
 
@@ -100,16 +105,18 @@ CREATE TABLE `usuarios` (
   `nombre` varchar(50) DEFAULT NULL,
   `apellido` varchar(50) DEFAULT NULL,
   `correo_electronico` varchar(100) DEFAULT NULL,
-  `contrasena` varchar(50) DEFAULT NULL
+  `contrasena` varchar(50) DEFAULT NULL,
+  `hierarchy` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id_usuario`, `nombre`, `apellido`, `correo_electronico`, `contrasena`) VALUES
-(9, 'Horacio', 'Vallejos', 'horavallejos@gmail.com', '987987987'),
-(12, 'Horacio', 'Vallejos', 'informatecorrientes@gmail.com', 'polkn,mnoiu');
+INSERT INTO `usuarios` (`id_usuario`, `nombre`, `apellido`, `correo_electronico`, `contrasena`, `hierarchy`) VALUES
+(9, 'Horacio', 'Vallejos', 'horavallejos@gmail.com', '987987987', 'user'),
+(12, 'Horacio', 'Vallejos', 'informatecorrientes@gmail.com', 'polkn,mnoiu', 'user'),
+(17, 'admin', 'admin', 'admin', 'admin', 'admin');
 
 --
 -- Índices para tablas volcadas
@@ -162,7 +169,7 @@ ALTER TABLE `carrito_compras`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidos`
@@ -174,13 +181,13 @@ ALTER TABLE `pedidos`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Restricciones para tablas volcadas
