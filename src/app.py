@@ -514,4 +514,4 @@ def prod():
     return render_template('prods.html',data=productos,categories=categories)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
