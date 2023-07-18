@@ -263,7 +263,6 @@ def crud():
 @app.route('/crud_users')
 def crud_users():
     usuarios = Usuario().get_usuario()
-    # return render_template('users.html',data=usuarios)
     return render_template('users.html',data=usuarios)
 
 # Traigo de la DB los datos para pasar al template prods.html
@@ -370,7 +369,7 @@ def eliminar_producto(id_producto):
     categorias = Categoria().get_categorias()
     return render_template('prods.html',data=productos,categories=categorias)
 
-# Rutas y funciones para las otras clases (CarritoCompras, Categoria, Pedido, Usuario) siguiendo el mismo patrón.
+
 @app.route('/usuarios')
 def obtener_usuarios():
     usuarios = Usuario().get_usuario()
@@ -410,7 +409,7 @@ def eliminar_usuario(id_usuario):
     usuarios = Usuario().get_usuario()
     return render_template('users.html',data=usuarios)
 
-# Rutas y funciones para las otras clases (CarritoCompras, Categoria, Pedido, Producto) siguiendo el mismo patrón.
+
 @app.route('/carrito_compras')
 def obtener_carrito_compras():
     carrito_compras = CarritoCompras().get_carrito_compras()
